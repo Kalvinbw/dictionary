@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  postgres403:
+    image: postgres:13.4
+    container_name: dictionaryDB
+    environment:
+      - POSTGRES_PASSWORD=dictionaryDB
+    volumes:
+      - dictionary-vol:/var/lib/postgresql/data
+    networks:
+      dictionary-network:
+        ipv4_address: 192.168.1.1
+    ports:
+      - 5432:5432
+  pgAdmin:
+    image: dpage/pgadmin4:latest
+    container_name: dictionary-admin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=kalvinwettstein@gmail.com
+      - PGADMIN_DEFAULT_PASSWORD=dictionaryDB
+    volumes:
+      - dictionary-admin-vol:/var/lib/pgadmin
+    networks:
+      dictionary-network:
+        ipv4_address: 192.168.1.2
+    ports:
+      - 5431:80
+volumes:
+  dictionary-vol:
+    name: dictionary-vol
+  dictionary-admin-vol:
+    name: dictionary-admin-vol
+networks:
+  dictionary-network:
+    name: dictionary-network
+    ipam:
+      config:
+        - subnet: 192.168.0.0/16
