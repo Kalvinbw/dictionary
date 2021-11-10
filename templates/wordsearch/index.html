@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<p>Index Page</p>
+<div class="container h-100">
+    <div class="d-flex justify-content-center h-100">
+        <div class="searchbar">
+            <input class="search_input" type="text" name="Searchbox" placeholder="Search a word...">
+            <a href="{% url 'results' search_word='input' %}" class="search_icon"><i class="fas fa-search"></i></a>
+        </div>
+    </div>
+</div>
 {% endblock %}
