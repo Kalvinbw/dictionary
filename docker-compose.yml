@@ -4,7 +4,7 @@ services:
     image: postgres:13.4
     container_name: dictionaryDB
     environment:
-      - POSTGRES_PASSWORD=dictionaryDB
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
       - dictionary-vol:/var/lib/postgresql/data
     networks:
@@ -16,8 +16,8 @@ services:
     image: dpage/pgadmin4:latest
     container_name: dictionary-admin
     environment:
-      - PGADMIN_DEFAULT_EMAIL=kalvinwettstein@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=dictionaryDB
+      - PGADMIN_DEFAULT_EMAIL=${DB_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${DB_PASSWORD}
     volumes:
       - dictionary-admin-vol:/var/lib/pgadmin
     networks:
