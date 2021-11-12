@@ -2,10 +2,21 @@
 {% load static %}
 {% block content %}
 <div class="container h-100">
-    <div class="d-flex justify-content-center h-100">
+    <div class="d-flex justify-content-center">
+        <form name="form" method="get" action="{% url 'search' %}" class="searchbar">
+            <input class="search_input" type="text" name="search_word" placeholder="Search a word..." id='search_word'>
+            <button type="submit" class="search_icon"><i class="fas fa-search"></i></button>
+        </form>
+        {% comment %} <input class="search_input" type="text" name="Searchbox" placeholder="Search a word..." id='search_word'>
+        <a href="{% url 'search' %}" class="search_icon"><i class="fas fa-search"></i></a> {% endcomment %}        
+    </div>
+    <div class="justify-content-center h-100">
         <h3>{{search_word|upper}}</h3>
         <br>
-        <p>{{ definition }}
+        <p><strong>Dictionary Definition:</strong> {{ definition }}</p>
+        <hr>
+        <p><strong>Urban Dictionary:</strong> {{ urban }}
+        <hr>
     </div>
 </div>
 {% endblock %}
