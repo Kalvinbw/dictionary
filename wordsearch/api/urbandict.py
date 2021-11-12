@@ -15,6 +15,7 @@ def urbanDict(term):
         }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
+    
     cleaned_response = json.loads(response.text) 
     if 'error' in cleaned_response:
         return os.error
