@@ -32,7 +32,7 @@ def searchPageView(request):
     # set context
     context = {
         'search_word': search_word,
-        'definition': dictionary,
+        'dictionary': dictionary,
         'urban': urban 
         }
     return render(request, 'wordsearch/search.html', context)

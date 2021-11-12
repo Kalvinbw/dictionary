@@ -2,6 +2,19 @@ from os import error
 import requests
 import json
 
+class Dictionary():
+    def __init__(self, data):
+        self.definitions = []
+        self.word = data[0]['word']
+        self.meanings = len(data[0]['meanings'])
+        for meaning in range(0, self.meanings):
+            myDict = {
+                'number': meaning,
+                'partOfSpeech': data[0]['meanings'][meaning]['partOfSpeech'],
+                'definition': data[0]['meanings'][meaning]['definitions'][0]['definition']
+            }
+            self.definitions.append(myDict)
+
 def dictionaryAPI(word):
     # free open API
     url = "https://api.dictionaryapi.dev/api/v2/entries/en/" + word
@@ -12,8 +25,11 @@ def dictionaryAPI(word):
     if type(cleaned_response) != list:
         return error
     else:
-        return cleaned_response[0]['meanings'][0]['definitions'][0]['definition']
+        result = Dictionary(cleaned_response)
+        return result
 
+r = dictionaryAPI('test')
+print(r.meanings)
 # example response
 # [
 #     {

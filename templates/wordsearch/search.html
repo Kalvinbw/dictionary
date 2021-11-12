@@ -13,9 +13,15 @@
     <div class="justify-content-center h-100">
         <h3>{{search_word|upper}}</h3>
         <br>
-        <p><strong>Dictionary Definition:</strong> {{ definition }}</p>
+        <p><strong>Dictionary Definitions:</strong> {{ dictionary.meanings }}</p>
+        {% for meaning in dictionary.definitions%}
+        <p>{{meaning.partOfSpeech}}: {{ meaning.definition }}</P>
+        {%endfor%}
         <hr>
-        <p><strong>Urban Dictionary:</strong> {{ urban }}
+        <p><strong>Urban Dictionary:</strong> {{ urban.meanings }}</p>
+        {% for meaning in urban.definitions%}
+        <p>{{meaning.number}}: {{ meaning.definition }}</P>
+        {%endfor%}
         <hr>
     </div>
 </div>

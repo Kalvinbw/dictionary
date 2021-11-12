@@ -4,6 +4,21 @@ import json
 from dotenv import load_dotenv
 load_dotenv()
 
+class Urban():
+    def __init__(self, data):
+        self.word = data['list'][0]['word']
+        self.definitions = []
+        if len(data['list']) > 5:
+            self.meanings = 5
+        else: 
+            self.meanings = len(data['list'])
+        for meaning in range(0, self.meanings):
+            myDict = {
+                'number': meaning + 1,
+                'definition': data['list'][meaning]['definition'].replace('[', '').replace(']', '')
+            }
+            self.definitions.append(myDict)
+
 def urbanDict(term):
     url = "https://mashape-community-urban-dictionary.p.rapidapi.com/define"
 
@@ -20,7 +35,8 @@ def urbanDict(term):
     if 'error' in cleaned_response:
         return os.error
     else:
-        return cleaned_response['list'][0]['definition']
+        result = Urban(cleaned_response)
+        return result
 
 # example object (comes in a list)
 # {11 items
