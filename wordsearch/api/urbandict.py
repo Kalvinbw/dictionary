@@ -25,8 +25,8 @@ def urbanDict(term):
     querystring = {"term":term}
 
     headers = {
-        'x-rapidapi-host': str(os.getenv('URBAN_DICT_HOST')),
-        'x-rapidapi-key': str(os.getenv('URBAN_DICT_KEY'))
+        'x-rapidapi-host': os.environ.get('URBAN_DICT_HOST'), #str(os.getenv('URBAN_DICT_HOST')),
+        'x-rapidapi-key': os.environ.get('URBAN_DICT_KEY')# str(os.getenv('URBAN_DICT_KEY'))
         }
 
     response = requests.request("GET", url, headers=headers, params=querystring)
