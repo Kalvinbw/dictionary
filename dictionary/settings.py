@@ -28,10 +28,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = str(os.getenv('SECRET_KEY')) # For dev testing
-SECRET_KEY = os.environ.get('SECRET_KEY') # for production
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-o^3u#tv@dd=uvo8ih++)23giczmwuru9@t-amfd#)a9pr=z0me') # for production
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', 'dictionary-fun.herokuapp.com']
 
